@@ -39,8 +39,17 @@ export class OpeningsController {
   }
   public getNextMove(activeColor: ChessPieceColor): string | null {
     if (this.activeOpenning.startColor === activeColor) return null;
+    this.addTrainedPositionId(this.currentPosition.id);
     if (this.currentPosition.opponentMoves.length === 0) {
-      this.setActiveOpening(this.hasOpeningMistake ? this.activeOpenning : this.getNextOpening());
+      if (
+        this.hasOpeningMistake ||
+        this.activeOpenning.trainedPositions.length < this.activeOpenning.positions.length
+      ) {
+        this.setActiveOpening(this.activeOpenning);
+      } else {
+        this.setActiveOpening(this.getNextOpening());
+      }
+
       return null;
     }
     const nextMoves = this.currentPosition.opponentMoves.map((move) => {
@@ -60,7 +69,6 @@ export class OpeningsController {
     }
     const nextMove = nextMoves[0];
     this.currentPosition = this.getPosition(nextMove.nextPositionId);
-
     return nextMove.move;
   }
   private getNextOpening() {
@@ -88,13 +96,24 @@ export class OpeningsController {
 
     this.renderOpeningsList();
   }
+  private addTrainedPositionId(id: string) {
+    if (!this.activeOpenning.trainedPositions.includes(id)) {
+      this.activeOpenning.trainedPositions.push(id);
+      this.renderOpeningsList();
+    }
+  }
   private renderOpeningsList() {
     const openingsList = document.querySelector(".openings-list");
     if (!openingsList) throw new Error("Openings list does not exist");
     openingsList.innerHTML = "";
+
+    const header = document.createElement("h2");
+    header.textContent = "Openings";
+    openingsList.appendChild(header);
+
     this.openings.forEach((opening) => {
       const openingItem = document.createElement("li");
-      openingItem.textContent = opening.name;
+      openingItem.textContent = `${opening.name} (${opening.trainedPositions.length}/${opening.positions.length})`;
 
       openingsList.appendChild(openingItem);
 

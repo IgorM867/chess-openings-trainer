@@ -21,12 +21,14 @@ type Opening = WhiteOpening | BlackOpening;
 type WhiteOpening = {
   name: string;
   startColor: "white";
+  trainedPositions: string[];
   positions: Position[];
 };
 type BlackOpening = {
   name: string;
   startColor: "black";
   firstMove: string;
+  trainedPositions: string[];
   positions: Position[];
 };
 type Position = {

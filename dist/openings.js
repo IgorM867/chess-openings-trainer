@@ -22,6 +22,7 @@ const italianGamePositions = [
 const italianGame = {
     name: "Italian Game",
     startColor: "white",
+    trainedPositions: [],
     positions: italianGamePositions,
 };
 const scandinavianDefensePositions = [
@@ -32,6 +33,7 @@ const scandinavianDefensePositions = [
 const scandinavianDefense = {
     name: "Scandinavian Defense",
     startColor: "white",
+    trainedPositions: [],
     positions: scandinavianDefensePositions,
 };
 const sicilianDefensePositions = [
@@ -42,6 +44,7 @@ const sicilianDefense = {
     name: "Sicilian Defense",
     startColor: "black",
     firstMove: "e4",
+    trainedPositions: [],
     positions: sicilianDefensePositions,
 };
 const openings = [italianGame, scandinavianDefense, sicilianDefense];

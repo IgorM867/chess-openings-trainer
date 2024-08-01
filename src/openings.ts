@@ -23,6 +23,7 @@ const italianGamePositions: Position[] = [
 const italianGame: Opening = {
   name: "Italian Game",
   startColor: "white",
+  trainedPositions: [],
   positions: italianGamePositions,
 };
 
@@ -35,6 +36,7 @@ const scandinavianDefensePositions: Position[] = [
 const scandinavianDefense: Opening = {
   name: "Scandinavian Defense",
   startColor: "white",
+  trainedPositions: [],
   positions: scandinavianDefensePositions,
 };
 
@@ -47,6 +49,7 @@ const sicilianDefense: Opening = {
   name: "Sicilian Defense",
   startColor: "black",
   firstMove: "e4",
+  trainedPositions: [],
   positions: sicilianDefensePositions,
 };
 

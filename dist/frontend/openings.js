@@ -19,6 +19,13 @@ const italianGamePositions = [
     //
     { id: "5", bestMove: "Bb3", responseScore: 0, opponentMoves: [] },
 ];
+/*
+  1.e4 e5 2.Nf3 Nc6 3.Bc4
+    3...Bc5 4.c3 Nf6 5.d3 d6
+                             6.Bb3
+    3...Nf6 4.d3 Bc5 5.c3 d6
+  
+*/
 const italianGame = {
     name: "Italian Game",
     startColor: "white",

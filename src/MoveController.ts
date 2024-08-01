@@ -571,7 +571,7 @@ export class MoveController {
     menuItem.classList.add("square");
     menuItem.classList.add("promotion-menu-item");
     const piece = document.createElement("img");
-    piece.src = `../svg/${pieceColor}-${pieceName}.svg`;
+    piece.src = `svg/${pieceColor}-${pieceName}.svg`;
     piece.classList.add("chess-piece");
     menuItem.appendChild(piece);
     return menuItem;

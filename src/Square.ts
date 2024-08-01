@@ -32,12 +32,12 @@ export class Square {
       if (!img) {
         const img = document.createElement("img");
         img.classList.add("chess-piece");
-        const src = `../svg/${piece.color}-${piece.type}.svg`;
+        const src = `svg/${piece.color}-${piece.type}.svg`;
         img.setAttribute("src", src);
         img.setAttribute("draggable", "false");
         this.htmlElement.appendChild(img);
       } else {
-        img.src = `../svg/${piece.color}-${piece.type}.svg`;
+        img.src = `svg/${piece.color}-${piece.type}.svg`;
       }
     } else {
       const img = this.htmlElement.querySelector("img");

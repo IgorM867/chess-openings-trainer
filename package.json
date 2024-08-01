@@ -1,0 +1,9 @@
+{
+  "type": "commonjs",
+  "scripts": {
+    "watch": "tsc --watch"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  }
+}

@@ -1,0 +1,134 @@
+:root {
+  --first-board-color: #739552;
+  --second-board-color: #ebecd0;
+  --board-size: 720px;
+  --square-size: calc(var(--board-size) / 8);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  user-select: none;
+  background-color: #302e2b;
+  font-family: monospace;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+}
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  width: var(--board-size);
+  height: var(--board-size);
+}
+.square {
+  position: relative;
+  width: var(--square-size);
+  height: var(--square-size);
+  padding: 6px;
+  display: grid;
+  place-items: center;
+}
+.square.hover {
+  cursor: grab;
+}
+.square-dark {
+  background-color: var(--first-board-color);
+}
+.square-light {
+  background-color: var(--second-board-color);
+}
+.text-dark {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--first-board-color);
+}
+.text-light {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--second-board-color);
+}
+.row-number {
+  position: absolute;
+  left: 6px;
+  top: 6px;
+}
+.column-letter {
+  position: absolute;
+  bottom: 2px;
+  right: 4px;
+}
+.chess-piece {
+  z-index: 10;
+  width: 82px;
+  height: 82px;
+}
+.dragging {
+  position: fixed;
+  z-index: 20;
+}
+.square-dark:has(.dragging) {
+  background-color: #b9ca43;
+}
+.square-light:has(.dragging) {
+  background-color: #f5f682;
+}
+.possible-move {
+  background-color: red;
+}
+.move-hint::after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 100%;
+  opacity: 0.4;
+}
+.move-hint::after {
+  background-color: #302e2b;
+  width: 24px;
+  height: 24px;
+}
+.move-hint:has(img)::after {
+  width: calc(var(--square-size) - 20px);
+  height: calc(var(--square-size) - 20px);
+  background-color: transparent;
+  border: 8px solid #302e2b7d;
+}
+.promotion-menu {
+  position: absolute;
+  z-index: 100;
+  width: calc(var(--square-size));
+  height: calc(var(--square-size) * 4);
+  background-color: var(--second-board-color);
+  box-shadow: 0 0 2px 2px gray;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+.reverse {
+  flex-flow: wrap-reverse;
+  flex-direction: row-reverse;
+}
+
+.menu {
+  background-color: #21201e;
+  padding: 10px;
+  border-radius: 5px;
+  flex-grow: 1;
+}
+
+.openings-list {
+  color: white;
+}
+.openings-list li {
+  padding: 6px;
+  cursor: pointer;
+}
+.openings-list li:hover {
+  color: var(--first-board-color);
+}
+.active-opening {
+  color: var(--first-board-color);
+}
